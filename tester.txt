@@ -1,0 +1,5 @@
+string1*Ruben: 'Lebron James is the goat!'
+string2*Ruben: 'Kobe Bryant is the second greatest of all time'
+string3*Ruben: 'Michael Jordan is not even top 5'
+string4*Ruben: 'Zach Lavine is better than Jordan'
+string5*Ruben: 'Lebron is the goat of sports
