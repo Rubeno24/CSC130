@@ -1,8 +1,8 @@
 Art/background.png*background
-Art/rubenUpward.png*more0
-Art/rubenUpward1.png*more1
-Art/rubenUpward2.png*more2
-Art/rubenUpward3.png*more3
+Art/rubenUpward.png*up0
+Art/rubenUpward1.png*up1
+Art/rubenUpward2.png*up2
+Art/rubenUpward3.png*up3
 Art/rubenLeft.png*right0
 Art/rubenLeft1.png*right1
 Art/rubenLeft2.png*right2
@@ -15,3 +15,4 @@ Art/rubenDown.png*down0
 Art/rubenDown1.png*down1
 Art/rubenDown2.png*down2
 Art/rubenDown3.png*down3
+Art/shape.png*item

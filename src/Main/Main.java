@@ -35,9 +35,12 @@ public class Main{
 	
 	public static ArrayList<spriteInfo> sprites = new ArrayList<>();
 	public static Vector2D spriteCoords = new Vector2D(250,250);
-	public static spriteInfo spriteRender = new spriteInfo(spriteCoords, spriteInfo);
+	public static spriteInfo showSprites = new spriteInfo(spriteCoords, spriteInfo);
 	private static ArrayList<BoundingBox> bounds = new ArrayList<>();
 	public static Vector2D oldCoords = new Vector2D(0, 0);
+	public static boolean itemCheck = true;
+	public static String  itemText = "";
+	public static BoundingBox itemBoundry;
 
 
 
@@ -59,7 +62,20 @@ public class Main{
 		bounds.add(new BoundingBox(new Vector2D(-128, 720), 1400, 100)); // BOTTOM Boundary
 		bounds.add(new BoundingBox(new Vector2D(-128, -128), 170, 800)); // LEFT Boundary
 		bounds.add(new BoundingBox(new Vector2D(1280, -128), 150, 800)); // RIGHT Boundary
-		sprites.add(spriteRender);
+		
+		
+		
+		
+		
+		itemBoundry = (new BoundingBox(new Vector2D(600, 110), 100, 0));
+		bounds.add(itemBoundry);
+	
+		
+		
+
+
+		
+		sprites.add(showSprites);
 		
 			}
 	
@@ -74,25 +90,39 @@ public class Main{
 	/* This is your access to the "game loop" (It is a "callback" method from the Control class (do NOT modify that class!))*/
 	public static void update(Control ctrl) {
 		
-		oldCoords = spriteRender.getCoords();
-		ctrl.addSpriteToFrontBuffer(0, 0, "background");
 	
-		ctrl.addSpriteToFrontBuffer(spriteRender.getCoords().getX(), spriteRender.getCoords().getY(), spriteRender.getTag());
+		ctrl.addSpriteToFrontBuffer(0, 0, "background");
+		ctrl.addSpriteToFrontBuffer(600, 110, "item");
+	
+		ctrl.addSpriteToFrontBuffer(showSprites.getCoords().getX(), showSprites.getCoords().getY(), showSprites.getTag());
+		ctrl.drawString(550, 300, itemText, Color.RED);
+		
+		ctrl.drawString(160, 100, "x", Color.RED);
+		ctrl.drawString(450, 100, "x", Color.RED);
+		
+	
+		
 		
 		for (int i = 0; i < bounds.size(); i++) {
-			if (checkCollision(spriteRender.getBoundingBox(), bounds.get(i))) {
+			if (isCollidied(showSprites.getBoundingBox(), bounds.get(i))) {
 				moveCharacterBack();
 
 			}
 		}
 	
 	}
-	public static boolean checkCollision(BoundingBox box1, BoundingBox box2) {
-		return !( (box1.getX1() > box2.getX2()) || (box1.getX2() < box2.getX1()) ||(box1.getY1() > box2.getY2()) || (box1.getY2() < box2.getY1()) );
+	public static boolean isCollidied(BoundingBox box1, BoundingBox box2) {
+		if((box1.getX1() > box2.getX2()) || (box1.getX2() < box2.getX1()) ||(box1.getY1() > box2.getY2()) || (box1.getY2() < box2.getY1())){
+			return false;
+		}else{
+			return true;
+		}
+		
+		
 	}
 	public static void moveCharacterBack() {
 		// spriteRender.setCoords(oldCoords);
-		spriteRender.bounceBack();
+		showSprites.moveBack();
 	}
 	
 }

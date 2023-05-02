@@ -85,11 +85,11 @@ public class spriteInfo {
 	public void setBoundingBox(BoundingBox boundingBox) {
 		this.boundingBox = boundingBox;
 	}
-	public void bounceBack() {
+	public void moveBack() {
 
 		this.v2d.setX(this.lastVec.getX());
 		this.v2d.setY(this.lastVec.getY());
-		this.boundingBox = new BoundingBox(this.v2d);
+		
 	}
 
 	

@@ -22,6 +22,8 @@ public class KeyProcessor{
 			if(sw.isTimeUp() == false)			return;
 		last = key;
 		sw.resetWatch();
+		Main.itemText = ""; // reset
+		
 		
 		/* TODO: You can modify values below here! */
 		switch(key){
@@ -29,36 +31,44 @@ public class KeyProcessor{
 			System.exit(0);
 			break;
 			
-	
+		case '$':
+			lastKey = '$';
+			boolean itemCheck = ((Main.showSprites.getBoundingBox().getY1()  - Main.itemBoundry.getY2() < 30) 
+					&& Main.showSprites.getBoundingBox().getX1() > Main.itemBoundry.getX1() && 
+					Main.showSprites.getBoundingBox().getX1() < Main.itemBoundry.getX2() );
+			if (itemCheck ) {
+				Main.itemText = "What a strange Item"; //TODO: diff doorbell text
+			}
+			break;
+			
 		case 'a':
 			lastKey = 'a';
 			spriteInfo = "left";
-			moveSprite(spriteInfo, -40, 0, key);
+			moveSprite(spriteInfo, -30, 0, key);
 			break; 
 		case 'w':
 			lastKey = 'w';
-			spriteInfo = "more";
-			moveSprite(spriteInfo, 0, -40, key);
+			spriteInfo = "up";
+			moveSprite(spriteInfo, 0, -30, key);
 			break; 
 		case 's':
 			lastKey = 's';
 			spriteInfo = "down";
-			moveSprite(spriteInfo, 0, 40, key);
+			moveSprite(spriteInfo, 0, 30, key);
 			break; 
 		case 'd':
 			lastKey = 'd';
 			spriteInfo = "right";
-			moveSprite(spriteInfo, 40, 0, key);
+			moveSprite(spriteInfo, 30, 0, key);
 			break; 
-	
-	
-
-		
 		case 'm':
 			// For mouse coordinates
 			Control.isMouseCoordsDisplayed = !Control.isMouseCoordsDisplayed;
 			break;
+			
+			
 		}
+		
 	}
 	private static void moveSprite(String spriteInfo, int moveCountX, int moveCountY, char key) {
 		if (key == lastKey) {
@@ -66,11 +76,11 @@ public class KeyProcessor{
 			if (spriteMoveCount >= 4) {
 				spriteMoveCount = 0;
 			}
-			Main.spriteRender.setTag(spriteInfo + spriteMoveCount);
+			Main.showSprites.setTag(spriteInfo + spriteMoveCount);
 		} else {
 			spriteMoveCount = 0;
-			Main.spriteRender.setTag(spriteInfo + spriteMoveCount);
+			Main.showSprites.setTag(spriteInfo + spriteMoveCount);
 		}
-		Main.spriteRender.moveSprite(moveCountX, moveCountY);
+		Main.showSprites.moveSprite(moveCountX, moveCountY);
 	}
 }
