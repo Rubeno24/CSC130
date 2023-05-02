@@ -33,22 +33,22 @@ public class KeyProcessor{
 		case 'a':
 			lastKey = 'a';
 			spriteInfo = "left";
-			moveSprite(spriteInfo, -30, 0, key);
+			moveSprite(spriteInfo, -40, 0, key);
 			break; 
 		case 'w':
 			lastKey = 'w';
 			spriteInfo = "more";
-			moveSprite(spriteInfo, 0, -30, key);
+			moveSprite(spriteInfo, 0, -40, key);
 			break; 
 		case 's':
 			lastKey = 's';
 			spriteInfo = "down";
-			moveSprite(spriteInfo, 0, 30, key);
+			moveSprite(spriteInfo, 0, 40, key);
 			break; 
 		case 'd':
 			lastKey = 'd';
 			spriteInfo = "right";
-			moveSprite(spriteInfo, 30, 0, key);
+			moveSprite(spriteInfo, 40, 0, key);
 			break; 
 	
 	
