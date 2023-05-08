@@ -34,7 +34,7 @@ public class Main{
 	public static String spriteInfo = "right0";
 	
 	public static ArrayList<spriteInfo> sprites = new ArrayList<>();
-	public static Vector2D spriteCoords = new Vector2D(250,250);
+	public static Vector2D spriteCoords = new Vector2D(700,250);
 	public static spriteInfo showSprites = new spriteInfo(spriteCoords, spriteInfo);
 	private static ArrayList<BoundingBox> bounds = new ArrayList<>();
 	public static Vector2D oldCoords = new Vector2D(0, 0);
@@ -59,15 +59,19 @@ public class Main{
 	public static void start(){
 		
 		bounds.add(new BoundingBox(new Vector2D(-128, -128), 1400, 100)); // TOP Boundary
-		bounds.add(new BoundingBox(new Vector2D(-128, 720), 1400, 100)); // BOTTOM Boundary
+		bounds.add(new BoundingBox(new Vector2D(-128, 650), 1400, 100)); // BOTTOM Boundary
 		bounds.add(new BoundingBox(new Vector2D(-128, -128), 170, 800)); // LEFT Boundary
-		bounds.add(new BoundingBox(new Vector2D(1280, -128), 150, 800)); // RIGHT Boundary
+		bounds.add(new BoundingBox(new Vector2D(1230, 100), 150, 800)); // RIGHT Boundary
+
+		bounds.add(new BoundingBox(new Vector2D(540, 600), 100, 100));
 		
 		
 		
+		bounds.add(new BoundingBox(new Vector2D(200, 100), 200, 100));// house
+
 		
-		
-		itemBoundry = (new BoundingBox(new Vector2D(600, 110), 100, 0));
+		itemBoundry = (new BoundingBox(new Vector2D(650, 140), 100, 100));
+
 		bounds.add(itemBoundry);
 	
 		

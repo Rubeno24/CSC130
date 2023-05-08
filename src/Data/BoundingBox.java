@@ -23,13 +23,7 @@ public class BoundingBox {
 	        this.y1 = spriteLocation.getY();
 	        this.y2 = spriteLocation.getY() + height;
 	    }
-	   public BoundingBox(int width, int height) {
-	        this.spriteLocation = new Vector2D(0, 0);
-	        this.x1 = spriteLocation.getX();
-	        this.x2 = spriteLocation.getX() + width;
-	        this.y1 = spriteLocation.getX();
-	        this.y2 = spriteLocation.getX() + height;
-	    }
+	   
 	   public Vector2D getSpriteLocation() {
 	        return spriteLocation;
 	    }

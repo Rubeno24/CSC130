@@ -36,7 +36,7 @@ public class KeyProcessor{
 			boolean itemCheck = ((Main.showSprites.getBoundingBox().getY1()  - Main.itemBoundry.getY2() < 30) 
 					&& Main.showSprites.getBoundingBox().getX1() > Main.itemBoundry.getX1() && 
 					Main.showSprites.getBoundingBox().getX1() < Main.itemBoundry.getX2() );
-			if (itemCheck ) {
+			if (itemCheck  ) {
 				Main.itemText = "What a strange Item"; //TODO: diff doorbell text
 			}
 			break;
