@@ -46,43 +46,10 @@ public class BoundingBox {
 
 
 
-	    // SETTERS
-	    // SETTERS
-	    public void setSpriteLocation(Vector2D spriteLocation) {
-	        this.spriteLocation = spriteLocation;
-	        // default values
-	        this.x1 = spriteLocation.getX();
-	        this.x2 = spriteLocation.getX() + 128;
+	   
 
-	        this.y1 = spriteLocation.getY();
-	        this.y2 = spriteLocation.getY() + 128;
-	    }
-	    
+	 
 
-	    // Custom method to specify bounding barriers
-	    public void setSpriteLocation(Vector2D spriteLocation, int widthAdj, int heighAdj) {
-	        this.spriteLocation = spriteLocation;
-	        this.x1 = spriteLocation.getX();
-	        this.x2 = spriteLocation.getX() + widthAdj;
-
-	        this.y1 = spriteLocation.getY();
-	        this.y2 = spriteLocation.getY() + heighAdj;
-	    }
-
-	    public void setX1(int x1) {
-	        this.x1 = x1;
-	    }
-
-	    public void setX2(int x2) {
-	        this.x2 = x2;
-	    }
-
-	    public void setY1(int y1) {
-	        this.y1 = y1;
-	    }
-
-	    public void setY2(int y2) {
-	        this.y2 = y2;
-	    }
+	  
 
 }

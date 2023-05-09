@@ -39,8 +39,19 @@ public class Main{
 	private static ArrayList<BoundingBox> bounds = new ArrayList<>();
 	public static Vector2D oldCoords = new Vector2D(0, 0);
 	public static boolean itemCheck = true;
-	public static String  itemText = "";
-	public static BoundingBox itemBoundry;
+	public static String  ringText = "";
+	public static BoundingBox ringBoundry;
+
+	public static String  houseText = "";
+	public static BoundingBox houseBoundry;
+
+	public static String  houseText1 = "";
+	public static BoundingBox houseBoundry1;
+
+	public static String  ballText = "";
+	public static BoundingBox ballBoundry;
+
+
 
 
 
@@ -63,16 +74,27 @@ public class Main{
 		bounds.add(new BoundingBox(new Vector2D(-128, -128), 170, 800)); // LEFT Boundary
 		bounds.add(new BoundingBox(new Vector2D(1230, 100), 150, 800)); // RIGHT Boundary
 
-		bounds.add(new BoundingBox(new Vector2D(540, 600), 100, 100));
+		//bounds.add(new BoundingBox(new Vector2D(540, 587), 100, 100)); //water
 		
 		
 		
-		bounds.add(new BoundingBox(new Vector2D(200, 100), 200, 100));// house
+		//bounds.add(new BoundingBox(new Vector2D(200, 100), 200, 100));// house
+
+
+		//bounds.add(new BoundingBox(new Vector2D(883, 195), 150, 100)); //hosue boundry;
+		houseBoundry = (new BoundingBox(new Vector2D(883, 195), 150, 100));
+		houseBoundry1 = (new BoundingBox(new Vector2D(150, 135), 150, 100));
 
 		
-		itemBoundry = (new BoundingBox(new Vector2D(650, 140), 100, 100));
+		ringBoundry = (new BoundingBox(new Vector2D(650, 550), 65, 55));
 
-		bounds.add(itemBoundry);
+		bounds.add(new BoundingBox(new Vector2D(540, 587), 100, 100));//water
+		ballBoundry= (new BoundingBox(new Vector2D(70, 550), 65, 55));
+
+		bounds.add(ringBoundry);
+		bounds.add(houseBoundry);
+		bounds.add(houseBoundry1);
+		bounds.add(ballBoundry);
 	
 		
 		
@@ -96,13 +118,17 @@ public class Main{
 		
 	
 		ctrl.addSpriteToFrontBuffer(0, 0, "background");
-		ctrl.addSpriteToFrontBuffer(600, 110, "item");
+		ctrl.addSpriteToFrontBuffer(690, 560, "Ring");
+		ctrl.addSpriteToFrontBuffer(120, 550, "Ball");
 	
 		ctrl.addSpriteToFrontBuffer(showSprites.getCoords().getX(), showSprites.getCoords().getY(), showSprites.getTag());
-		ctrl.drawString(550, 300, itemText, Color.RED);
+		ctrl.drawString(350, 300, ringText, Color.RED);
+		ctrl.drawString(360, 300, houseText, Color.RED);
+		ctrl.drawString(360, 300, houseText1, Color.RED);
+		ctrl.drawString(360, 300, ballText, Color.RED);
 		
-		ctrl.drawString(160, 100, "x", Color.RED);
-		ctrl.drawString(450, 100, "x", Color.RED);
+		
+	
 		
 	
 		

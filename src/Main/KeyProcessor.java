@@ -22,7 +22,11 @@ public class KeyProcessor{
 			if(sw.isTimeUp() == false)			return;
 		last = key;
 		sw.resetWatch();
-		Main.itemText = ""; // reset
+		Main.ringText = "";
+		Main.houseText = ""; // reset
+		Main.houseText1 = ""; // reset
+		Main.ballText = ""; 
+		
 		
 		
 		/* TODO: You can modify values below here! */
@@ -33,12 +37,35 @@ public class KeyProcessor{
 			
 		case '$':
 			lastKey = '$';
-			boolean itemCheck = ((Main.showSprites.getBoundingBox().getY1()  - Main.itemBoundry.getY2() < 30) 
-					&& Main.showSprites.getBoundingBox().getX1() > Main.itemBoundry.getX1() && 
-					Main.showSprites.getBoundingBox().getX1() < Main.itemBoundry.getX2() );
-			if (itemCheck  ) {
-				Main.itemText = "What a strange Item"; //TODO: diff doorbell text
+			boolean itemCheck = ((Main.showSprites.getBoundingBox().getY1()  - Main.ringBoundry.getY2() < 30) 
+					&& Main.showSprites.getBoundingBox().getX1() > Main.ringBoundry.getX1() && 
+					Main.showSprites.getBoundingBox().getX1() < Main.ringBoundry.getX2() );
+			if (itemCheck  == true) {
+				Main.ringText = "LeBron's 5th Ring is on the floor. I should take it to his house."; //TODO: diff doorbell text
 			}
+
+			boolean houseCheck = ((Main.showSprites.getBoundingBox().getY1()  - Main.houseBoundry.getY2() < 30) 
+					&& Main.showSprites.getBoundingBox().getX1() > Main.houseBoundry.getX1() && 
+					Main.showSprites.getBoundingBox().getX1() < Main.houseBoundry.getX2() );
+			if (houseCheck  == true) {
+				Main.houseText = "This house is way to small it belongs to Michael Jordan"; //TODO: diff doorbell text
+			}
+
+
+			boolean houseCheck1 = ((Main.showSprites.getBoundingBox().getY1()  - Main.houseBoundry1.getY2() < 30) 
+					&& Main.showSprites.getBoundingBox().getX1() > Main.houseBoundry1.getX1() && 
+					Main.showSprites.getBoundingBox().getX1() < Main.houseBoundry1.getX2() );
+			if (houseCheck1  == true) {
+				Main.houseText1 = "Lebron does not seem to be home. He is destroying the Warriors."; //TODO: diff doorbell text
+			}
+			boolean ballCheck = ((Main.showSprites.getBoundingBox().getY1()  - Main.ballBoundry.getY2() < 30) 
+					&& Main.showSprites.getBoundingBox().getX1() > Main.ballBoundry.getX1() && 
+					Main.showSprites.getBoundingBox().getX1() < Main.ballBoundry.getX2() );
+			if (ballCheck  == true) {
+				Main.ballText = "Someone left a basketball I should take it to Lebrons House"; //TODO: diff doorbell text
+			}
+
+			
 			break;
 			
 		case 'a':

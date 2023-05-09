@@ -15,4 +15,5 @@ Art/rubenDown.png*down0
 Art/rubenDown1.png*down1
 Art/rubenDown2.png*down2
 Art/rubenDown3.png*down3
-Art/shape.png*item
+Art/goldRing.png*Ring
+Art/basketball.png*Ball
