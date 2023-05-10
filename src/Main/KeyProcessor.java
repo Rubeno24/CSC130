@@ -6,15 +6,14 @@ import logic.Control;
 import timer.stopWatchX;
 
 public class KeyProcessor{
-	// Static Fields
-	private static char last = ' ';			// For debouncing purposes
+	
+	private static char last = ' ';			
 	private static char lastKey = ' ';
 	private static String spriteInfo = "";
 	private static int spriteMoveCount = 0;
 	private static stopWatchX sw = new stopWatchX(250);
 	
 	
-	// Static Method(s)
 	public static void processKey(char key){
 		if(key == ' ')				return;
 		// Debounce routine below...
@@ -34,33 +33,29 @@ public class KeyProcessor{
 		case '%':								// ESC key
 			System.exit(0);
 			break;
-			
+		
+		//
 		case '$':
 			lastKey = '$';
-			boolean itemCheck = ((Main.showSprites.getBoundingBox().getY1()  - Main.ringBoundry.getY2() < 30) 
-					&& Main.showSprites.getBoundingBox().getX1() > Main.ringBoundry.getX1() && 
-					Main.showSprites.getBoundingBox().getX1() < Main.ringBoundry.getX2() );
-			if (itemCheck  == true) {
-				Main.ringText = "LeBron's 5th Ring is on the floor. I should take it to his house."; //TODO: diff doorbell text
+			//if the space key is pressed and our characters bounding box is coliding or near coliding ringCheck will be true
+			boolean ringCheck = ((Main.displayCharacter.getBoundingBox().getY1() - Main.ringBoundry.getY2() < 30) && Main.displayCharacter.getBoundingBox().getX1() > Main.ringBoundry.getX1() && Main.displayCharacter.getBoundingBox().getX1() < Main.ringBoundry.getX2());
+			if (ringCheck  == true) {
+				//will only execute if ringCheck is true and ring text will be assigned this line of text to be displayed in the main file
+				Main.ringText = "LeBron's 5th Ring is on the floor. I should take it to his house."; 
 			}
 
-			boolean houseCheck = ((Main.showSprites.getBoundingBox().getY1()  - Main.houseBoundry.getY2() < 30) 
-					&& Main.showSprites.getBoundingBox().getX1() > Main.houseBoundry.getX1() && 
-					Main.showSprites.getBoundingBox().getX1() < Main.houseBoundry.getX2() );
+			boolean houseCheck = ((Main.displayCharacter.getBoundingBox().getY1()  - Main.RighthouseBoundry.getY2() < 30) && Main.displayCharacter.getBoundingBox().getX1() > Main.RighthouseBoundry.getX1() && Main.displayCharacter.getBoundingBox().getX1() < Main.RighthouseBoundry.getX2());
 			if (houseCheck  == true) {
-				Main.houseText = "This house is way to small it belongs to Michael Jordan"; //TODO: diff doorbell text
+				Main.houseText = "This house is way tood small it belongs to Michael Jordan"; //TODO: diff doorbell text
 			}
 
 
-			boolean houseCheck1 = ((Main.showSprites.getBoundingBox().getY1()  - Main.houseBoundry1.getY2() < 30) 
-					&& Main.showSprites.getBoundingBox().getX1() > Main.houseBoundry1.getX1() && 
-					Main.showSprites.getBoundingBox().getX1() < Main.houseBoundry1.getX2() );
+			boolean houseCheck1 = ((Main.displayCharacter.getBoundingBox().getY1()  - Main.LefthouseBoundry.getY2() < 30) && Main.displayCharacter.getBoundingBox().getX1() > Main.LefthouseBoundry.getX1() && Main.displayCharacter.getBoundingBox().getX1() < Main.LefthouseBoundry.getX2() );
 			if (houseCheck1  == true) {
 				Main.houseText1 = "Lebron does not seem to be home. He is destroying the Warriors."; //TODO: diff doorbell text
 			}
-			boolean ballCheck = ((Main.showSprites.getBoundingBox().getY1()  - Main.ballBoundry.getY2() < 30) 
-					&& Main.showSprites.getBoundingBox().getX1() > Main.ballBoundry.getX1() && 
-					Main.showSprites.getBoundingBox().getX1() < Main.ballBoundry.getX2() );
+
+			boolean ballCheck = ((Main.displayCharacter.getBoundingBox().getY1()  - Main.ballBoundry.getY2() < 30) && Main.displayCharacter.getBoundingBox().getX1() > Main.ballBoundry.getX1() && Main.displayCharacter.getBoundingBox().getX1() < Main.ballBoundry.getX2() );
 			if (ballCheck  == true) {
 				Main.ballText = "Someone left a basketball I should take it to Lebrons House"; //TODO: diff doorbell text
 			}
@@ -103,11 +98,11 @@ public class KeyProcessor{
 			if (spriteMoveCount >= 4) {
 				spriteMoveCount = 0;
 			}
-			Main.showSprites.setTag(spriteInfo + spriteMoveCount);
+			Main.displayCharacter.setTag(spriteInfo + spriteMoveCount);
 		} else {
 			spriteMoveCount = 0;
-			Main.showSprites.setTag(spriteInfo + spriteMoveCount);
+			Main.displayCharacter.setTag(spriteInfo + spriteMoveCount);
 		}
-		Main.showSprites.moveSprite(moveCountX, moveCountY);
+		Main.displayCharacter.moveSprite(moveCountX, moveCountY);
 	}
 }
