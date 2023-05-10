@@ -46,7 +46,7 @@ public class KeyProcessor{
 
 			boolean houseCheck = ((Main.displayCharacter.getBoundingBox().getY1()  - Main.RighthouseBoundry.getY2() < 30) && Main.displayCharacter.getBoundingBox().getX1() > Main.RighthouseBoundry.getX1() && Main.displayCharacter.getBoundingBox().getX1() < Main.RighthouseBoundry.getX2());
 			if (houseCheck  == true) {
-				Main.houseText = "This house is way tood small it belongs to Michael Jordan"; //TODO: diff doorbell text
+				Main.houseText = "This house is way too small it belongs to Michael Jordan"; //TODO: diff doorbell text
 			}
 
 
