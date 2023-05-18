@@ -10,7 +10,7 @@ public class KeyProcessor{
 	private static char last = ' ';			
 	private static char lastKey = ' ';
 	private static String spriteInfo = "";
-	private static int spriteMoveCount = 0;
+	private static int count = 0;
 	private static stopWatchX sw = new stopWatchX(250);
 	
 	
@@ -21,9 +21,10 @@ public class KeyProcessor{
 			if(sw.isTimeUp() == false)			return;
 		last = key;
 		sw.resetWatch();
+		//resets the text so its not on the screen at all times
 		Main.ringText = "";
-		Main.houseText = ""; // reset
-		Main.houseText1 = ""; // reset
+		Main.houseText = ""; 
+		Main.houseText1 = ""; 
 		Main.ballText = ""; 
 		
 		
@@ -44,25 +45,28 @@ public class KeyProcessor{
 				Main.ringText = "LeBron's 5th Ring is on the floor. I should take it to his house."; 
 			}
 
+			//Same goes for the 2 houses and the ball. If they bounding boxes colide and the player press the space buttton
+			//Its corresponding line of text will execute
 			boolean houseCheck = ((Main.displayCharacter.getBoundingBox().getY1()  - Main.RighthouseBoundry.getY2() < 30) && Main.displayCharacter.getBoundingBox().getX1() > Main.RighthouseBoundry.getX1() && Main.displayCharacter.getBoundingBox().getX1() < Main.RighthouseBoundry.getX2());
 			if (houseCheck  == true) {
-				Main.houseText = "This house is way too small it belongs to Michael Jordan"; //TODO: diff doorbell text
+				Main.houseText = "This house is way too small it belongs to Michael Jordan"; 
 			}
 
 
 			boolean houseCheck1 = ((Main.displayCharacter.getBoundingBox().getY1()  - Main.LefthouseBoundry.getY2() < 30) && Main.displayCharacter.getBoundingBox().getX1() > Main.LefthouseBoundry.getX1() && Main.displayCharacter.getBoundingBox().getX1() < Main.LefthouseBoundry.getX2() );
 			if (houseCheck1  == true) {
-				Main.houseText1 = "Lebron does not seem to be home. He is destroying the Warriors."; //TODO: diff doorbell text
+				Main.houseText1 = "Lebron does not seem to be home. He is destroying the Warriors."; 
 			}
 
 			boolean ballCheck = ((Main.displayCharacter.getBoundingBox().getY1()  - Main.ballBoundry.getY2() < 30) && Main.displayCharacter.getBoundingBox().getX1() > Main.ballBoundry.getX1() && Main.displayCharacter.getBoundingBox().getX1() < Main.ballBoundry.getX2() );
 			if (ballCheck  == true) {
-				Main.ballText = "Someone left a basketball I should take it to Lebrons House"; //TODO: diff doorbell text
+				Main.ballText = "Someone left a basketball I should take it to Lebrons House"; 
 			}
 
 			
 			break;
-			
+		//if w,a,s,d are pressed we will assign lastkey with whatever key is pressed, we will then call our moveSprite method and 
+		//pass in the name of the direction which corresponds to the name of the sprite and the respective direction that we will move in
 		case 'a':
 			lastKey = 'a';
 			spriteInfo = "left";
@@ -92,17 +96,20 @@ public class KeyProcessor{
 		}
 		
 	}
-	private static void moveSprite(String spriteInfo, int moveCountX, int moveCountY, char key) {
+	private static void moveSprite(String spriteInfo, int countX, int countY, char key) {
+		// if the key pressed is equal to last key were going to increase our count untill its greater than 4
+		// if its not greater than 4 we are going to append that number to the direction that corresponds with
+		// a sprite tag, for example count is 3 and the spirte tag is left that would be left3 which is the name of a spritetag
 		if (key == lastKey) {
-			spriteMoveCount++;
-			if (spriteMoveCount >= 4) {
-				spriteMoveCount = 0;
+			count++;
+			if (count >= 4) {
+				count = 0;
 			}
-			Main.displayCharacter.setTag(spriteInfo + spriteMoveCount);
+			Main.displayCharacter.setTag(spriteInfo + count);
 		} else {
-			spriteMoveCount = 0;
-			Main.displayCharacter.setTag(spriteInfo + spriteMoveCount);
+			count = 0;
+			Main.displayCharacter.setTag(spriteInfo + count);
 		}
-		Main.displayCharacter.moveSprite(moveCountX, moveCountY);
+		Main.displayCharacter.moveSprite(countX, countY);
 	}
 }
